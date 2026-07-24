@@ -34,8 +34,8 @@ export default function Gallery() {
     <main>
 
       {/* HERO */}
-      <section style={{ position: 'relative', minHeight: '70vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: 'var(--color-surface-container)' }}>
-        <img src={HERO_IMG} alt="Gallery hero" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.25 }} />
+      <section className="page-hero-section" style={{ padding: 0 }}>
+        <img src={HERO_IMG} alt="Gallery hero" className="hero-bg-img" />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(255,248,246,0.95) 50%, rgba(255,248,246,0.4) 100%)' }} />
         <div className="container" style={{ position: 'relative', zIndex: 1, paddingBlock: '100px' }}>
           <span className="eyebrow fade-up">Our Portfolio</span>
@@ -44,9 +44,9 @@ export default function Gallery() {
           </h1>
           <div className="gold-divider-dot" style={{ maxWidth: 320, marginBottom: 24 }}><span className="dot" /></div>
           <p className="fade-up delay-1" style={{ fontSize: 18, color: 'var(--color-on-surface-muted)', maxWidth: 520, marginBottom: 40, lineHeight: 1.8 }}>
-            Explore our curated collection of bespoke Mehendi designs and intricate Aari embroidery, capturing the essence of ancestral Indian craftsmanship.
+            Explore our curated collection of bespoke Mehendi designs and intricate Aari embroidery.
           </p>
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+          <div className="flex-cta">
             <Link to="/contact" className="btn btn-primary">Book Your Design →</Link>
             <a href="#gallery-grid" className="btn btn-outline">Browse Gallery</a>
           </div>
@@ -56,7 +56,7 @@ export default function Gallery() {
       {/* CATEGORIES */}
       <section className="section-sm" style={{ background: 'var(--color-primary)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 24 }}>
+          <div className="grid-4">
             {categories.map(c => (
               <div key={c.title} style={{ textAlign: 'center', padding: 24 }}>
                 <div style={{ fontSize: 36, marginBottom: 12, color: 'var(--color-gold-light)' }}>
@@ -77,26 +77,19 @@ export default function Gallery() {
           <div className="text-center" style={{ marginBottom: 48 }}>
             <span className="eyebrow">Browse By Category</span>
             <h2 className="headline-md" style={{ color: 'var(--color-primary)', marginBottom: 32 }}>Our Work</h2>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
+            <div className="filter-buttons" style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
               {FILTERS.map(f => (
                 <button key={f} onClick={() => setActive(f)}
-                  style={{
-                    padding: '10px 28px', borderRadius: 'var(--radius-full)',
-                    fontSize: 13, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
-                    border: active === f ? '2px solid var(--color-primary)' : '1.5px solid var(--color-outline-variant)',
-                    background: active === f ? 'var(--color-primary)' : 'transparent',
-                    color: active === f ? '#fff' : 'var(--color-on-surface-muted)',
-                    cursor: 'pointer', transition: 'all 0.25s',
-                  }}>
+                  className={`filter-btn ${active === f ? 'active' : ''}`}>
                   {f}
                 </button>
               ))}
             </div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 4 }}>
+          <div className="gallery-grid-layout">
             {items.map((item, i) => (
-              <div key={i} className="gallery-item" style={{ aspectRatio: '1' }}>
-                <img src={item.src} alt={item.caption} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }} />
+              <div key={i} className="gallery-item">
+                <img src={item.src} alt={item.caption} />
                 <div className="gallery-overlay">
                   <div>
                     <div className="gallery-caption">{item.caption}</div>
@@ -112,7 +105,7 @@ export default function Gallery() {
       {/* PROCESS PREVIEW */}
       <section className="section-sm" style={{ background: 'var(--color-surface-container)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+          <div className="grid-2">
             <div>
               <span className="eyebrow">Behind the Art</span>
               <h2 className="headline-md" style={{ color: 'var(--color-primary)', marginBottom: 16 }}>Every Design is a Story</h2>
@@ -135,7 +128,7 @@ export default function Gallery() {
       {/* INSTAGRAM CTA */}
       <section className="section">
         <div className="container">
-          <div style={{ background: 'var(--color-primary)', borderRadius: 'var(--radius-xl)', padding: '64px 48px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'center' }}>
+          <div className="instagram-card">
             <div>
               <span className="eyebrow" style={{ color: 'var(--color-gold-light)' }}>Follow Our Journey</span>
               <h2 className="headline-md" style={{ color: '#fff', marginBottom: 16 }}>Daily Inspiration on Instagram</h2>
@@ -147,7 +140,7 @@ export default function Gallery() {
                 Follow @AishuPetals
               </a>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 4, borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
+            <div className="insta-grid">
               {[MEHENDI_IMG, AARI_IMG, BRIDE_IMG, HERO_IMG, MEHENDI_IMG, AARI_IMG].map((src, i) => (
                 <div key={i} style={{ aspectRatio: '1', overflow: 'hidden' }}>
                   <img src={src} alt="Instagram post" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.85 }} />
@@ -159,17 +152,19 @@ export default function Gallery() {
       </section>
 
       {/* CTA BAND */}
-      <section style={{ background: 'var(--color-surface-container)', padding: '80px 0', textAlign: 'center' }}>
-        <div className="container">
+      <section className="cta-band" style={{ background: 'var(--color-surface-container)' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
           <span className="eyebrow">Love What You See?</span>
           <h2 className="headline-md" style={{ color: 'var(--color-primary)', margin: '12px 0 16px' }}>Let's Create Your Design</h2>
           <p style={{ color: 'var(--color-on-surface-muted)', maxWidth: 440, margin: '0 auto 32px', fontSize: 15 }}>
             Book a consultation and Aishu will craft a design exclusively for you.
           </p>
-          <Link to="/contact" className="btn btn-primary">
-            <i className="bi bi-calendar-check" style={{ marginRight: 8 }}></i>
-            Book a Consultation
-          </Link>
+          <div className="flex-cta-center">
+            <Link to="/contact" className="btn btn-primary">
+              <i className="bi bi-calendar-check" style={{ marginRight: 8 }}></i>
+              Book a Consultation
+            </Link>
+          </div>
         </div>
       </section>
 

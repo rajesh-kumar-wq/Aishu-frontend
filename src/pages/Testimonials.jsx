@@ -21,7 +21,7 @@ export default function Testimonials() {
     <main>
 
       {/* HERO */}
-      <section style={{ position: 'relative', minHeight: '70vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: 'linear-gradient(135deg, var(--color-surface-container) 0%, var(--color-surface-highest) 100%)' }}>
+      <section className="page-hero-section">
         <div style={{ position: 'absolute', right: '-80px', top: '-80px', width: 500, height: 500, borderRadius: '50%', border: '1px solid var(--color-gold)', opacity: 0.15, pointerEvents: 'none' }} />
         <div className="container" style={{ paddingBlock: '100px', textAlign: 'center' }}>
           <span className="eyebrow fade-up">Client Love</span>
@@ -32,7 +32,7 @@ export default function Testimonials() {
           <p className="fade-up delay-1" style={{ fontSize: 18, color: 'var(--color-on-surface-muted)', maxWidth: 580, margin: '0 auto 40px', lineHeight: 1.8 }}>
             Every review here is a story — a bride's joy, a family's pride, a moment made unforgettable. Hear from the women who trusted Aishu with their most cherished occasions.
           </p>
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="flex-cta-center">
             <Link to="/contact" className="btn btn-primary">Book Your Experience →</Link>
             <Link to="/gallery" className="btn btn-outline">See Our Work</Link>
           </div>
@@ -42,7 +42,7 @@ export default function Testimonials() {
       {/* STATS BAR */}
       <section style={{ background: 'var(--color-primary)', padding: '48px 0' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 24, textAlign: 'center' }}>
+          <div className="grid-4-stats">
             {[['★ 5.0', 'Average Rating'], ['500+', 'Happy Clients'], ['100%', 'Recommend Us'], ['10+', 'Years Trusted']].map(([n, l]) => (
               <div key={l}>
                 <div style={{ fontFamily: 'var(--font-headline)', fontSize: 'clamp(24px,3vw,36px)', fontWeight: 700, color: 'var(--color-secondary-light)' }}>{n}</div>
@@ -60,14 +60,14 @@ export default function Testimonials() {
             <span className="eyebrow">Client Spotlight</span>
             <h2 className="headline-md" style={{ color: 'var(--color-primary)' }}>"An Absolute Dream"</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32 }}>
+          <div className="grid-2">
             {featured.map(t => (
-              <div key={t.author} style={{ background: 'var(--color-surface-low)', borderRadius: 'var(--radius-xl)', padding: 48, border: '1px solid var(--color-outline-variant)', boxShadow: 'var(--shadow-hover)', position: 'relative' }}>
-                <div style={{ position: 'absolute', top: 20, left: 32, fontFamily: 'var(--font-headline)', fontSize: 100, lineHeight: 1, color: 'var(--color-gold)', opacity: 0.2 }}>"</div>
+              <div key={t.author} className="featured-testimonial">
+                <div className="quote-mark">"</div>
                 <div style={{ color: 'var(--color-gold)', letterSpacing: 2, fontSize: 18, marginBottom: 24 }}>★★★★★</div>
                 <p style={{ fontFamily: 'var(--font-headline)', fontStyle: 'italic', fontSize: 18, lineHeight: 1.75, color: 'var(--color-on-surface-muted)', marginBottom: 32, position: 'relative', zIndex: 1 }}>"{t.quote}"</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                  <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'var(--color-surface-container)', border: '2px solid var(--color-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 18, color: 'var(--color-primary)' }}>
+                  <div className="avatar">
                     {t.author[0]}
                   </div>
                   <div>
@@ -89,7 +89,7 @@ export default function Testimonials() {
             <h2 className="headline-md" style={{ color: 'var(--color-primary)' }}>More Words of Love</h2>
             <p style={{ color: 'var(--color-on-surface-muted)', maxWidth: 480, margin: '12px auto 0' }}>Each review is a story of a moment made unforgettable.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+          <div className="grid-3">
             {reviews.map(t => (
               <div key={t.author} className="testimonial-card">
                 <div className="stars">{'★'.repeat(t.rating)}</div>
@@ -109,14 +109,14 @@ export default function Testimonials() {
             <span className="eyebrow">Why They Choose Us</span>
             <h2 className="headline-md" style={{ color: 'var(--color-primary)' }}>Built on Trust</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 32 }}>
+          <div className="grid-4">
             {[
               { icon: 'bi-flower1',        title: '100% Organic',      desc: 'Pure natural henna — no chemicals, no allergies, no compromise' },
               { icon: 'bi-brush',          title: 'Bespoke Designs',   desc: 'Every pattern created fresh — no templates, no repetition' },
               { icon: 'bi-clock-history',  title: 'Always On Time',    desc: 'Professional punctuality for weddings and events alike' },
               { icon: 'bi-heart',          title: 'After-care Support', desc: 'Detailed guidance to ensure your henna stays dark and beautiful' },
             ].map(b => (
-              <div key={b.title} style={{ textAlign: 'center', padding: 32, background: 'var(--color-surface-low)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-outline-variant)', boxShadow: 'var(--shadow-card)' }}>
+              <div key={b.title} className="card value-card">
                 <div style={{ fontSize: 40, marginBottom: 16, color: 'var(--color-primary)' }}>
                   <i className={`bi ${b.icon}`}></i>
                 </div>
@@ -129,16 +129,16 @@ export default function Testimonials() {
       </section>
 
       {/* SHARE YOUR STORY CTA */}
-      <section style={{ background: 'var(--color-surface-container)', padding: '80px 0' }}>
+      <section className="section-sm" style={{ background: 'var(--color-surface-container)' }}>
         <div className="container">
-          <div style={{ background: 'var(--color-primary)', borderRadius: 'var(--radius-xl)', padding: '64px 48px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'center' }}>
+          <div className="instagram-card">
             <div>
               <span className="eyebrow" style={{ color: 'var(--color-gold-light)' }}>Join Our Story</span>
               <h2 className="headline-md" style={{ color: '#fff', marginBottom: 16 }}>Become Our Next Happy Bride</h2>
               <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 15, lineHeight: 1.7, marginBottom: 32 }}>
                 Join hundreds of brides who have trusted Aishu with their most special moments. Book a consultation and let's create your story together.
               </p>
-              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+              <div className="flex-cta">
                 <Link to="/contact" className="btn btn-gold" style={{ borderColor: '#fff', color: '#fff' }}>
                   <i className="bi bi-calendar-check" style={{ marginRight: 8 }}></i>
                   Book Now

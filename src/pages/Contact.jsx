@@ -21,7 +21,7 @@ export default function Contact() {
     <main>
 
       {/* HERO */}
-      <section style={{ position: 'relative', minHeight: '70vh', display: 'flex', alignItems: 'center', background: 'linear-gradient(135deg, var(--color-surface-container) 0%, var(--color-surface-highest) 100%)', overflow: 'hidden' }}>
+      <section className="page-hero-section">
         <div style={{ position: 'absolute', left: '-80px', bottom: '-80px', width: 500, height: 500, borderRadius: '50%', border: '1px solid var(--color-gold)', opacity: 0.15, pointerEvents: 'none' }} />
         <div className="container" style={{ paddingBlock: '100px', textAlign: 'center' }}>
           <span className="eyebrow fade-up">Get in Touch</span>
@@ -32,7 +32,7 @@ export default function Contact() {
           <p className="fade-up delay-1" style={{ fontSize: 18, color: 'var(--color-on-surface-muted)', maxWidth: 560, margin: '0 auto 40px', lineHeight: 1.8 }}>
             Let us weave artistry into your special moments. Book a consultation or reach out for inquiries regarding our bespoke Mehendi and Aari services.
           </p>
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="flex-cta-center">
             <a href="tel:+917358831918" className="btn btn-primary">
               <i className="bi bi-telephone" style={{ marginRight: 8 }}></i>
               Call Now
@@ -45,7 +45,7 @@ export default function Contact() {
       {/* QUICK CONTACT CARDS */}
       <section style={{ background: 'var(--color-primary)', padding: '56px 0' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 24 }}>
+          <div className="grid-4">
             {contactInfo.map(c => (
               <div key={c.label} style={{ textAlign: 'center', padding: '24px 16px' }}>
                 <div style={{ fontSize: 36, marginBottom: 12, color: 'var(--color-gold-light)' }}>
@@ -66,7 +66,7 @@ export default function Contact() {
       {/* MAIN FORM + INFO */}
       <section className="section" id="booking-form">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '80px', alignItems: 'start' }}>
+          <div className="contact-grid">
 
             {/* LEFT: Info + Map */}
             <div>
@@ -90,7 +90,7 @@ export default function Contact() {
             </div>
 
             {/* RIGHT: Booking Form */}
-            <div style={{ background: 'var(--color-surface-low)', borderRadius: 'var(--radius-xl)', padding: 48, boxShadow: 'var(--shadow-hover)', border: '1px solid var(--color-outline-variant)' }}>
+            <div className="form-card">
               <span className="eyebrow">Book an Appointment</span>
               <h2 className="headline-md" style={{ color: 'var(--color-primary)', marginBottom: 8 }}>Request a Consultation</h2>
               <p style={{ fontSize: 14, color: 'var(--color-on-surface-muted)', marginBottom: 36 }}>Fill out the form below and we will contact you within 24 hours to confirm your session.</p>
@@ -104,7 +104,7 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+                  <div className="form-row">
                     <div className="form-group">
                       <label className="form-label">Full Name *</label>
                       <input className="form-input" name="name" value={form.name} onChange={handle} required placeholder="Your name" />
@@ -114,7 +114,7 @@ export default function Contact() {
                       <input className="form-input" name="phone" value={form.phone} onChange={handle} required placeholder="+91 XXXXX XXXXX" />
                     </div>
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+                  <div className="form-row">
                     <div className="form-group">
                       <label className="form-label">Service Required *</label>
                       <select className="form-select" name="service" value={form.service} onChange={handle} required>
@@ -167,13 +167,13 @@ export default function Contact() {
             <span className="eyebrow">Why Choose Aishu?</span>
             <h2 className="headline-md" style={{ color: 'var(--color-primary)' }}>What to Expect</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 28 }}>
+          <div className="grid-3">
             {[
               { icon: 'bi-person-check', title: 'Personal Consultation', desc: 'Every booking begins with a relaxed 1-on-1 discussion about your vision, outfit, and expectations. We listen before we create.' },
               { icon: 'bi-lightning-charge', title: 'Quick Confirmation', desc: 'We confirm bookings within 24 hours. No chasing, no uncertainty — just a clear schedule so you can plan your wedding stress-free.' },
               { icon: 'bi-star', title: 'Day-of Excellence', desc: 'On your special day, we arrive on time, fully prepared, and stay until every detail is perfect. Your comfort is our priority.' },
             ].map(b => (
-              <div key={b.title} className="card" style={{ padding: 32, textAlign: 'center' }}>
+              <div key={b.title} className="card value-card">
                 <div style={{ fontSize: 40, marginBottom: 16, color: 'var(--color-primary)' }}>
                   <i className={`bi ${b.icon}`}></i>
                 </div>
@@ -186,14 +186,14 @@ export default function Contact() {
       </section>
 
       {/* WHATSAPP CTA */}
-      <section style={{ background: 'var(--color-primary)', padding: '80px 0', textAlign: 'center' }}>
-        <div className="container">
+      <section className="cta-band" style={{ padding: '80px 0' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
           <span className="eyebrow" style={{ color: 'var(--color-gold-light)' }}>Quick Response</span>
           <h2 className="headline-md" style={{ color: '#fff', margin: '12px 0 16px' }}>Prefer to Chat Directly?</h2>
           <p style={{ color: 'rgba(255,255,255,0.75)', maxWidth: 440, margin: '0 auto 32px', fontSize: 15 }}>
             WhatsApp us directly for quick queries, design references, or to check availability.
           </p>
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="flex-cta-center">
             <a href={`https://wa.me/917358831918?text=${encodeURIComponent('Hello Aishu! I would like to book a consultation for Mehendi / Aari work. Please let me know your availability.')}`} target="_blank" rel="noreferrer" className="btn btn-gold" style={{ borderColor: '#fff', color: '#fff' }}>
               <i className="bi bi-whatsapp" style={{ marginRight: 8 }}></i>
               WhatsApp Us

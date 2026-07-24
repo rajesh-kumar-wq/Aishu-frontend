@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer style={{ background: 'var(--color-primary)', color: '#fff', paddingBlock: '80px 24px' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '64px', paddingBottom: '48px', borderBottom: '1px solid rgba(255,255,255,0.15)', marginBottom: '24px' }}>
+        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '64px', paddingBottom: '48px', borderBottom: '1px solid rgba(255,255,255,0.15)', marginBottom: '24px' }}>
           <div>
             <div style={{ fontFamily: 'var(--font-headline)', fontSize: '22px', fontWeight: 700, marginBottom: '12px' }}>
               Aishu Petals &amp; Patterns
@@ -52,7 +52,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', opacity: 0.55 }}>
+        <div className="footer-bottom" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', opacity: 0.55 }}>
           <span>© 2024 Aishu Petals &amp; Patterns. All Rights Reserved.</span>
           <span>Crafted with ♥ in Nagercoil</span>
         </div>

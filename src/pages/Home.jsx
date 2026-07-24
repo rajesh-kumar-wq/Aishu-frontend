@@ -14,8 +14,7 @@ function useFadeIn(ref) {
       entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'translateY(0)' } })
     }, { threshold: 0.12 })
     els.forEach(el => {
-      el.style.opacity = 0
-      el.style.transform = 'translateY(24px)'
+      el.style.opacity = 0; el.style.transform = 'translateY(24px)'
       el.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out'
       obs.observe(el)
     })
@@ -30,8 +29,8 @@ export default function Home() {
   return (
     <main ref={ref}>
       {/* HERO */}
-      <section style={{ position: 'relative', minHeight: '90vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: 'var(--color-surface-container)' }}>
-        <img src={HERO_IMG} alt="Bridal Mehendi" style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: '50%', height: '100%', objectFit: 'cover', opacity: 0.5 }} />
+      <section className="hero-section">
+        <img src={HERO_IMG} alt="Bridal Mehendi" className="hero-bg-img" />
         <div className="container fi" style={{ position: 'relative', zIndex: 1, paddingBlock: '80px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(78,6,23,0.08)', border: '1px solid var(--color-primary-container)', borderRadius: 'var(--radius-full)', padding: '6px 16px', marginBottom: 24 }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--color-gold)', display: 'inline-block' }} />
@@ -41,9 +40,9 @@ export default function Home() {
             Beautiful Designs.<br /><em>Timeless Impression.</em>
           </h1>
           <p style={{ fontSize: 18, color: 'var(--color-on-surface-muted)', maxWidth: 520, marginBottom: 36, lineHeight: 1.7 }}>
-            Bespoke Mehendi &amp; Aari artistry crafted for your most celebrated moments — where ancestral tradition meets contemporary elegance.
+            Bespoke Mehendi &amp; Aari artistry crafted for your most celebrated moments.
           </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
+          <div className="flex-cta">
             <Link to="/contact" className="btn btn-primary">Book a Consultation →</Link>
             <Link to="/gallery" className="btn btn-outline">View Gallery</Link>
           </div>
@@ -53,7 +52,7 @@ export default function Home() {
       {/* STATS */}
       <section style={{ background: 'var(--color-primary)', padding: '48px 0' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 24, textAlign: 'center' }}>
+          <div className="grid-4-stats">
             {[['10+','Years of Mastery'],['500+','Brides Adorned'],['100%','Organic Henna'],['★ 5.0','Client Rating']].map(([n, l]) => (
               <div key={l} className="fi">
                 <div style={{ fontFamily: 'var(--font-headline)', fontSize: 'clamp(28px,3vw,38px)', fontWeight: 700, color: 'var(--color-secondary-light)' }}>{n}</div>
@@ -67,7 +66,7 @@ export default function Home() {
       {/* ABOUT INTRO */}
       <section className="section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+          <div className="grid-2">
             <div className="fi">
               <img src={BRIDE_IMG} alt="Bride with mehendi" style={{ borderRadius: 'var(--radius-lg)', border: '3px solid var(--color-gold-light)', boxShadow: 'var(--shadow-hover)' }} />
             </div>
@@ -95,13 +94,13 @@ export default function Home() {
             <h2 className="headline-md" style={{ color: 'var(--color-primary)' }}>Bespoke Services</h2>
             <p style={{ color: 'var(--color-on-surface-muted)', maxWidth: 480, margin: '8px auto 0' }}>Tailored artistry for every occasion, crafted with precision and passion.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+          <div className="grid-3">
             {[
-              { icon: 'bi-flower1', title: 'Bridal Mehendi', desc: 'Elaborate, full-coverage designs telling your unique love story.', price: 'From ₹5,000' },
-              { icon: 'bi-flower2', title: 'Arabic Mehendi', desc: 'Flowing, bold floral and vine patterns with elegant spacing.', price: 'From ₹1,000' },
-              { icon: 'bi-gem', title: 'Bridal Aari Work', desc: 'Heavy, intricate gold and bead embroidery for bridal blouses.', price: 'From ₹8,000' },
+              { icon: 'bi-flower1',  title: 'Bridal Mehendi',  desc: 'Elaborate, full-coverage designs telling your unique love story.', price: 'From ₹5,000' },
+              { icon: 'bi-flower2',  title: 'Arabic Mehendi',  desc: 'Flowing, bold floral and vine patterns with elegant spacing.', price: 'From ₹1,000' },
+              { icon: 'bi-gem',      title: 'Bridal Aari Work',desc: 'Heavy, intricate gold and bead embroidery for bridal blouses.', price: 'From ₹8,000' },
             ].map((s, i) => (
-              <div key={s.title} className={`card fi`} style={{ animationDelay: `${i * 0.1}s` }}>
+              <div key={s.title} className="card fi">
                 <div style={{ height: 160, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--color-surface-high)', fontSize: 56, color: 'var(--color-primary)' }}>
                   <i className={`bi ${s.icon}`}></i>
                 </div>
@@ -126,7 +125,7 @@ export default function Home() {
             <span className="eyebrow">Artistry Gallery</span>
             <h2 className="headline-md" style={{ color: 'var(--color-primary)' }}>Our Recent Work</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 4 }}>
+          <div className="grid-3">
             {[[MEHENDI_IMG,'Arabic Mehendi'],[AARI_IMG,'Aari Embroidery'],[BRIDE_IMG,'Bridal Portrait']].map(([src, cap]) => (
               <div key={cap} className="gallery-item fi">
                 <img src={src} alt={cap} />
@@ -147,13 +146,13 @@ export default function Home() {
             <span className="eyebrow">Client Love</span>
             <h2 className="headline-md" style={{ color: 'var(--color-primary)' }}>Words from Our Brides</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+          <div className="grid-3">
             {[
               { quote: "Aishu's artistry is unmatched. The bespoke Mehendi pattern told our love story beautifully. I felt like royalty.", author: 'Priya S.', service: 'Bridal Mehendi' },
               { quote: "The Aari embroidery on my blouse was a true masterpiece. The golden threads caught the light perfectly.", author: 'Ananya V.', service: 'Custom Aari Work' },
               { quote: "The consultation alone was so luxurious. The final result exceeded all expectations.", author: 'Meera D.', service: 'Bridal Consultation' },
-            ].map((t, i) => (
-              <div key={t.author} className={`testimonial-card fi`}>
+            ].map(t => (
+              <div key={t.author} className="testimonial-card fi">
                 <div className="stars">★★★★★</div>
                 <p style={{ fontStyle: 'italic', fontSize: 14, lineHeight: 1.75, color: 'var(--color-on-surface-muted)', marginTop: 32, marginBottom: 20 }}>"{t.quote}"</p>
                 <div style={{ fontWeight: 600, color: 'var(--color-primary)', fontSize: 14 }}>{t.author}</div>
@@ -174,8 +173,7 @@ export default function Home() {
           <h2 className="headline-md" style={{ color: '#fff', margin: '12px 0 16px' }}>Let Us Adorn Your Special Moment</h2>
           <p style={{ color: 'rgba(255,255,255,0.75)', maxWidth: 480, margin: '0 auto 32px', fontSize: 15 }}>Book a consultation with Aishu and let's create something unforgettable together.</p>
           <Link to="/contact" className="btn btn-gold" style={{ borderColor: '#fff', color: '#fff' }}>
-            <i className="bi bi-calendar-check" style={{ marginRight: 8 }}></i>
-            Book Your Appointment
+            <i className="bi bi-calendar-check" style={{ marginRight: 8 }}></i>Book Your Appointment
           </Link>
         </div>
       </section>

@@ -79,8 +79,7 @@
 .mobile-nav {
   position: fixed;
   inset: 0;
-  background: rgba(255,248,246,0.97);
-  backdrop-filter: blur(24px);
+  background: #FFF8F6; /* Solid background to prevent overlap */
   z-index: 200;
   display: flex;
   flex-direction: column;
@@ -110,6 +109,23 @@
   .navbar-links { display: none; }
   .hamburger { display: flex; }
   .navbar-inner { padding-inline: 20px; }
+}
+
+@media (max-width: 480px) {
+  .navbar-inner { padding-inline: 16px; }
+  .navbar-logo { font-size: 16px; }
+  .navbar-logo span { font-size: 8px; }
+  .mobile-nav a { font-size: 22px; gap: 8px; }
+  .mobile-nav { gap: 20px; }
+}
+
+/* Mobile menu slide-in animation */
+.mobile-nav {
+  animation: mobileNavIn 0.3s ease-out;
+}
+@keyframes mobileNavIn {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Bootstrap Icon Styles ─────────────────────── */
