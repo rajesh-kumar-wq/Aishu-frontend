@@ -5,17 +5,17 @@ const AARI_IMG   = 'https://lh3.googleusercontent.com/aida/AP1WRLsieGzmQVy3Yv29d
 const BRIDE_IMG  = 'https://lh3.googleusercontent.com/aida/AP1WRLv-9LL7exrov0fFSD0cDV65DF3sBy64IomXHKQR-7Zf0uKMFw2CJDMwoh6804SSTdxIF60ORIp5-oF8KrhOsDhB9IQtTf6WZYAQ-d4z21Ff4segx6ZXhE7dpJbyoRzSW-cjd3mFepvGvRRJV2Ii428jwATKpcCbhIegemYlJ_t7-9LYG56oJamNKYq9nB5scrgeTPzxcNo1olBk6hTEYUuiuIIDfKc5v0rirUROL4uvCB-SNgETTKO-s6i4'
 
 const mehendiServices = [
-  { name: 'Bridal Mehendi',  price: 'From ₹5,000', icon: 'bi-person-heart', desc: 'Intricate, full-coverage designs combining traditional motifs, figures, and personalised elements. Includes both hands and feet.' },
-  { name: 'Arabic Style',    price: 'From ₹1,000', icon: 'bi-flower1',      desc: 'Elegant, flowing patterns with prominent floral motifs and significant negative space for a modern, bold, sophisticated look.' },
-  { name: 'Engagement',      price: 'From ₹2,500', icon: 'bi-gem',          desc: 'Sophisticated mid-length designs, balancing traditional detail with elegant simplicity — perfect for your ring ceremony.' },
-  { name: 'Festival Henna',  price: 'From ₹800',   icon: 'bi-stars',        desc: 'Festive motifs for Karwa Chauth, Diwali, and Eid celebrations. Group bookings available for events and gatherings.' },
-  { name: 'Guest Mehendi',   price: '₹800 / hr',   icon: 'bi-people',       desc: 'Swift, beautiful designs for all your wedding guests. Professional, punctual, and adored by everyone.' },
+  { name: 'Bridal Mehendi',  price: 'Starts at ₹1,000', icon: 'bi-person-heart', desc: 'Intricate, full-coverage designs combining traditional motifs, figures, and personalised elements. Includes both hands and feet.' },
+  { name: 'Arabic Style',    price: 'Starts at ₹100', icon: 'bi-flower1',      desc: 'Elegant, flowing patterns with prominent floral motifs and significant negative space for a modern, bold, sophisticated look.' },
+  { name: 'Engagement',      price: 'Starts at ₹800', icon: 'bi-gem',          desc: 'Sophisticated mid-length designs, balancing traditional detail with elegant simplicity — perfect for your ring ceremony.' },
+  { name: 'Festival Henna',  price: 'Starts at ₹500',   icon: 'bi-stars',        desc: 'Festive motifs for Karwa Chauth, Diwali, and Eid celebrations. Group bookings available for events and gatherings.' },
+  { name: 'Guest Mehendi',   price: '₹200 / hr',   icon: 'bi-people',       desc: 'Swift, beautiful designs for all your wedding guests. Professional, punctual, and adored by everyone.' },
 ]
 
 const aariServices = [
-  { name: 'Bridal Blouse (Heavy)', price: 'From ₹8,000', icon: 'bi-gem',    desc: 'Heavy Aari work across neckline, sleeves, and back using premium zardosi, cutdana, and micro-beads for an opulent bridal look.' },
-  { name: 'Semi-Bridal',           price: 'From ₹4,500', icon: 'bi-flower2', desc: 'Elegant designs focusing on rich borders and neckline detailing. Perfect for engagement sarees or close family members.' },
-  { name: 'Simple & Elegant',      price: 'From ₹1,800', icon: 'bi-sparkle', desc: 'Subtle touches of Aari embroidery — delicate scattered buttas or minimal necklines. Ideal for party wear and receptions.' },
+  { name: 'Bridal Blouse (Heavy)', price: 'From ₹1,000', icon: 'bi-gem',    desc: 'Heavy Aari work across neckline, sleeves, and back using premium zardosi, cutdana, and micro-beads for an opulent bridal look.' },
+  { name: 'Semi-Bridal',           price: 'From ₹500', icon: 'bi-flower2', desc: 'Elegant designs focusing on rich borders and neckline detailing. Perfect for engagement sarees or close family members.' },
+  { name: 'Simple & Elegant',      price: 'From ₹400', icon: 'bi-sparkle', desc: 'Subtle touches of Aari embroidery — delicate scattered buttas or minimal necklines. Ideal for party wear and receptions.' },
 ]
 
 const process = [
