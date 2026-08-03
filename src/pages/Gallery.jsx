@@ -1,10 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-
-const MEHENDI_IMG = 'https://lh3.googleusercontent.com/aida/AP1WRLvCVNbQE1fpOKt_JRJk1wyepbja_TPe1wEzb3pX4h81egLJjfs_6Y5Yp2xv_LqvBKNHSVxOvPo76aA0gUN6VR__w9thFleClxYDAwAYzX-ESsMMmceYM4aRPdZIKBWINlV7liGCiZZnJ3w-Rp6BxGcmbMtfyVLNWJLTtUlkd7SAKbVapsnY-re1qI870uygufeVjdhCh3GtRVrELSF74aR_LIvX_c8LSe4EAFi3Z9gymXoKcS5NIY7iDqk'
-const AARI_IMG   = 'https://lh3.googleusercontent.com/aida/AP1WRLsieGzmQVy3Yv29dTVosdPOt79ZakpUvkBF-6PBS0ghzhwguQ51oaUQSrdSFU_Gqg9nwllhLcgXGpQvP_MWiXptxDl9H3a7w9iiPawhMeCE2gNX2wL44diX-HoPPn-UEqcC-ojW7ocYvbqET-IcapdZaoXx7BMwPJukCNvPHt1s70z4pN15kjzOm5eIAjqZCnxdvW4MEKkYk_T5o63EA23lcE3-jRcn-cbSr0Rhhg3TxHcf1_okX24wnX0z'
-const BRIDE_IMG  = 'https://lh3.googleusercontent.com/aida/AP1WRLv-9LL7exrov0fFSD0cDV65DF3sBy64IomXHKQR-7Zf0uKMFw2CJDMwoh6804SSTdxIF60ORIp5-oF8KrhOsDhB9IQtTf6WZYAQ-d4z21Ff4segx6ZXhE7dpJbyoRzSW-cjd3mFepvGvRRJV2Ii428jwATKpcCbhIegemYlJ_t7-9LYG56oJamNKYq9nB5scrgeTPzxcNo1olBk6hTEYUuiuIIDfKc5v0rirUROL4uvCB-SNgETTKO-s6i4'
-const HERO_IMG   = 'https://lh3.googleusercontent.com/aida/AP1WRLvG33XbkkdOxhPCiuu21z-oMEZ080SrnmI5rS05Uax4QxXuYHWnkEXIGUHqaYmlJMTjcnGk2-ArIKwlIWmqN--0LjeG-Yx2R2UbtPNNCglO0cp-MXgEXtF9HKYg7Zvwxciyjct0ibrPZ5UxRDbp6YM42r3536hrM7Hz987eyJLKUJdlQpNS0VE2JHCefWiN__MQkC7Zux8EVtqtINdgR_HQ4H3yDADzou30QKOMAcQLzhIkuOngoknzdDkw'
+import { HERO_IMG, BRIDE_IMG, MEHENDI_IMG, AARI_IMG } from '../assets/images'
 
 const ALL_ITEMS = [
   { src: MEHENDI_IMG, caption: 'Bridal Elegance',    tag: 'Mehendi',    cat: 'mehendi', desc: 'Full bridal coverage with intricate floral motifs' },
