@@ -9,12 +9,45 @@ const contactInfo = [
   { icon: 'bi-instagram',       label: 'Instagram',       value: '@AishuPetals',           href: 'https://instagram.com',    sub: 'DM us for quick queries' },
 ]
 
+const API_URL = 'http://localhost:8000/api/bookings/'
+
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', phone: '', service: '', date: '', occasion: '', message: '' })
+  const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', date: '', occasion: '', message: '' })
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handle = e => setForm(p => ({ ...p, [e.target.name]: e.target.value }))
-  const submit = e => { e.preventDefault(); setSent(true) }
+
+  const submit = async e => {
+    e.preventDefault()
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          date: form.date || null,  // send null if empty so Django accepts it
+        }),
+      })
+      const data = await res.json()
+      if (res.ok && data.success) {
+        setSent(true)
+      } else {
+        // Build a readable error string from DRF's error format
+        const msgs = data.errors
+          ? Object.values(data.errors).flat().join(' ')
+          : data.message || 'Something went wrong. Please try again.'
+        setError(msgs)
+      }
+    } catch {
+      setError('Network error. Please check your connection and try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <main>
@@ -113,6 +146,10 @@ export default function Contact() {
                       <input className="form-input" name="phone" value={form.phone} onChange={handle} required placeholder="+91 XXXXX XXXXX" />
                     </div>
                   </div>
+                  <div className="form-group">
+                    <label className="form-label">Email Address *</label>
+                    <input className="form-input" type="email" name="email" value={form.email} onChange={handle} required placeholder="you@example.com" />
+                  </div>
                   <div className="form-row">
                     <div className="form-group">
                       <label className="form-label">Service Required *</label>
@@ -145,9 +182,23 @@ export default function Contact() {
                     <label className="form-label">Message / Additional Details</label>
                     <textarea className="form-textarea" name="message" value={form.message} onChange={handle} placeholder="Tell us your outfit colour, jewellery style, any inspiration images you have in mind..." />
                   </div>
-                  <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: 14, padding: '16px 32px' }}>
-                    <i className="bi bi-send" style={{ marginRight: 8 }}></i>
-                    Send Enquiry
+                  {error && (
+                    <div style={{ background: 'rgba(220,38,38,0.08)', border: '1px solid rgba(220,38,38,0.25)', borderRadius: 'var(--radius-md)', padding: '12px 16px', color: '#b91c1c', fontSize: 14 }}>
+                      {error}
+                    </div>
+                  )}
+                  <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', justifyContent: 'center', fontSize: 14, padding: '16px 32px', opacity: loading ? 0.7 : 1 }}>
+                    {loading ? (
+                      <>
+                        <i className="bi bi-arrow-repeat" style={{ marginRight: 8, animation: 'spin 1s linear infinite' }}></i>
+                        Sending…
+                      </>
+                    ) : (
+                      <>
+                        <i className="bi bi-send" style={{ marginRight: 8 }}></i>
+                        Send Enquiry
+                      </>
+                    )}
                   </button>
                   <p style={{ fontSize: 12, color: 'var(--color-on-surface-muted)', textAlign: 'center' }}>
                     We respond within 24 hours · No spam, ever
